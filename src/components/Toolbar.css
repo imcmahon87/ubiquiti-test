@@ -1,0 +1,18 @@
+/* Toolbar Styling */
+
+#toolbar {
+    /*position: absolute;*/
+    height: 60px;
+    width: 100%;
+    /*top: 60px;*/
+    display: flex;
+    justify-content: space-between;
+}
+
+#search {
+    height: 50%;
+}
+
+#filter {
+    display: inline;
+}

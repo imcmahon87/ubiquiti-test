@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'), url('./assets/fonts/Lato-Regular.ttf'), format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
