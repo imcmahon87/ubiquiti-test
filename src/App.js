@@ -1,45 +1,38 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import Toolbar from './components/Toolbar';
+import Products from './components/Products';
 
 const App = () => {
-  const [ isLoading, setIsLoading ] = useState(true);
-  const [ database, setDatabase ] = useState([]);
-  
-  const getDatabase = () => {
-    fetch('https://static.ui.com/fingerprint/ui/public.json')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setDatabase(data);
-        setIsLoading(false);
-      });
+  const [ searchWord, setSearchWord ] = useState('');
+  const [ filterWords, setFilterWords ] = useState([]);
+
+  const handleSearch = (word) => {
+    setSearchWord(word);
   }
 
-  useEffect(() => {
-    getDatabase();
-  }, []);
+  const handleFilter = (event) => {
+    let updatedWords = [...filterWords];
+    let newWord = event.target.id;
+    if (event.target.checked) {
+      updatedWords = [...filterWords, newWord];
+    } else {
+      updatedWords.splice(filterWords.indexOf(newWord), 1);
+    }
+    console.log(updatedWords);
+    setFilterWords(updatedWords);
+  };
+
+  const clearFilter = () => {
+    setFilterWords([]);
+  }
 
   return (
     <>
       <Header />
-      <Toolbar />
-      <div>
-        <h1>Test</h1>
-        {isLoading ? (
-          <p>Loading data...</p>
-        ) : (
-          <>
-            <p>{database.devices[0].id}</p>
-            {<img src={'https://static.ui.com/fingerprint/ui/icons/' +
-              database.devices[0].icon.id + '_' + database.devices[0].icon.resolutions[4][0] +
-            'x' + database.devices[0].icon.resolutions[4][1] + '.png'} />}
-          </>
-        )}
-        <p>And more</p>
-      </div>
+      <Toolbar handleSearch={handleSearch} handleFilter={handleFilter} clearFilter={clearFilter} />
+      <Products searchWord={searchWord} filterWords={filterWords} />
     </>
   );
 }

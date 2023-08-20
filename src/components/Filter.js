@@ -1,13 +1,41 @@
-import displayGrid from '../assets/images/toolbar-display-grid-default.svg';
-import displayList from '../assets/images/toolbar-display-list-default.svg';
+import iconClose from '../assets/images/icon-close.svg';
+import FilterItem from './FilterItem';
+import { useState, useEffect } from 'react';
 
-const Filter = () => {
+const Filter = ({ handleFilterVisible, toggleVisible, handleFilter, clearFilter }) => {
+
+    const [ isVisible, setIsVisible ] = useState(false);
+
+    useEffect(() => {
+        if (toggleVisible) {
+            setIsVisible(true)
+        } else {
+            setIsVisible(false)
+        }
+    }, [toggleVisible]
+    );
+
     return (
-        <div id="filter">
-            <img src={displayGrid} alt="Display as Grid Icon" />
-            <img src={displayList} alt="Display as List Icon" />
-            <span>Filter</span>
-        </div>
+        isVisible ? (
+            <div id="filter">
+                <div id="filterHeader">
+                    <span>Filter</span>
+                    <img src={iconClose} alt="Close Icon" onClick={() => { handleFilterVisible(); clearFilter(); }} />
+                </div>
+                <div id="filterBody">
+                    <span>Product Line</span>
+                    <FilterItem line="UniFi" handleFilter={handleFilter} />
+                    <FilterItem line="UniFi LTE" handleFilter={handleFilter} />
+                    <FilterItem line="UniFi Protect" handleFilter={handleFilter} />
+                    <FilterItem line="UniFi Access" handleFilter={handleFilter} />
+                    <FilterItem line="airMax" handleFilter={handleFilter} />
+                    <FilterItem line="EdgeMax" handleFilter={handleFilter} />
+                </div>
+            </div>
+        ) : (
+            <>
+            </>
+        )
     );
 };
 
