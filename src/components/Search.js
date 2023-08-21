@@ -1,9 +1,12 @@
 import iconSearch from '../assets/images/icon-search.svg';
-import { useState } from 'react';
+import iconClose from '../assets/images/icon-close.svg';
+import { useState, useRef } from 'react';
 
 const Search = ({ handleSearch }) => {
 
     const [searchWord, setSearchWord] = useState('');
+
+    const ref = useRef(null);
 
     const updateSearchWord = (event) => {
         setSearchWord(event.target.value);
@@ -15,10 +18,17 @@ const Search = ({ handleSearch }) => {
         }
     };
 
+    const clearSearch = () => {
+        ref.current.value = '';
+        setSearchWord('');
+        handleSearch('');
+    };
+
     return (
         <div id="search">
             <img src={iconSearch} alt="Search Icon" onClick={() => handleSearch(searchWord)} />
-            <input type="text" placeholder="Search" onChange={updateSearchWord} onKeyDown={handleKeyDown} />
+            <input ref={ref} type="text" placeholder="Search" onChange={updateSearchWord} onKeyDown={handleKeyDown} />
+            <img src={iconClose} alt="Clear Search Icon" onClick={clearSearch} />
         </div>
     );
 };

@@ -3,10 +3,15 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Toolbar from './components/Toolbar';
 import Products from './components/Products';
+import ProductHeader from './components/ProductHeader';
+import ProductDetails from './components/ProductDetails';
 
 const App = () => {
+
   const [ searchWord, setSearchWord ] = useState('');
   const [ filterWords, setFilterWords ] = useState([]);
+  const [ gridView, setGridView ] = useState(false);
+  const [ productView, setProductView ] = useState('');
 
   const handleSearch = (word) => {
     setSearchWord(word);
@@ -26,13 +31,39 @@ const App = () => {
 
   const clearFilter = () => {
     setFilterWords([]);
+  };
+
+  const viewGrid = () => {
+    setGridView(true);
+  };
+
+  const viewList = () => {
+    setGridView(false);
+  };
+
+  const viewDetails = (product) => {
+    setProductView(product);
   }
 
   return (
     <>
       <Header />
-      <Toolbar handleSearch={handleSearch} handleFilter={handleFilter} clearFilter={clearFilter} />
-      <Products searchWord={searchWord} filterWords={filterWords} />
+        {productView ? (
+          <>
+            <ProductHeader viewDetails={viewDetails} product={productView} />
+            <div id="productWrapper">
+              <ProductDetails product={productView} />
+            </div>
+          </>
+        ) : (
+          <>
+            <Toolbar viewGrid={viewGrid} viewList={viewList} handleSearch={handleSearch} handleFilter={handleFilter} clearFilter={clearFilter} gridView={gridView} />
+            <div id="productWrapper">
+              <Products gridView={gridView} searchWord={searchWord} filterWords={filterWords} viewDetails={viewDetails} />
+            </div>
+          </>
+        )
+        }
     </>
   );
 }

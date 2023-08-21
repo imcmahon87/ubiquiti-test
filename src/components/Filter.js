@@ -23,7 +23,7 @@ const Filter = ({ handleFilterVisible, toggleVisible, handleFilter, clearFilter 
                     <img src={iconClose} alt="Close Icon" onClick={() => { handleFilterVisible(); clearFilter(); }} />
                 </div>
                 <div id="filterBody">
-                    <span>Product Line</span>
+                    <p>Product Line</p>
                     <FilterItem line="UniFi" handleFilter={handleFilter} />
                     <FilterItem line="UniFi LTE" handleFilter={handleFilter} />
                     <FilterItem line="UniFi Protect" handleFilter={handleFilter} />

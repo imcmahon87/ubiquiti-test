@@ -1,24 +1,32 @@
 /* Header Styling */
 
 #header {
-    /*position: absolute;*/
     width: 100%;
-    /*left: 0;
-    top: 0;*/
-    background-color: #F6F6F8;
+    background-color: #F2F2F2;
     font-family: "Lato";
     font-weight: 400;
     font-size: 20px;
     color: #838691;
     display: flex;
     justify-content: space-between;
-    height: 60px;
+    align-items: center;
+    height: 56px;
+}
+
+#headerLeft {
+    display: flex;
+    align-items: center;
 }
 
 #headerTitle {
-
+    margin-left: 1em;
 }
 
 #headerDeveloper {
+    margin-right: 1em;
+}
 
+#headerLogo {
+    height: 56px;
+    width: auto;
 }

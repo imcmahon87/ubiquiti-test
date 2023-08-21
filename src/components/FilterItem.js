@@ -1,7 +1,5 @@
 const FilterItem = ({ line, handleFilter }) => {
-    const test = () => {
-        console.log('hello');
-    };
+
     return (
 
         <div id="filterItem">

@@ -4,7 +4,7 @@ import Tools from './Tools';
 import Filter from './Filter';
 import { useState } from 'react';
 
-const Toolbar = ({ handleSearch, handleFilter, clearFilter }) => {
+const Toolbar = ({ viewGrid, viewList, handleSearch, handleFilter, clearFilter, gridView }) => {
 
     const [ filterVisible, setFilterVisible ] = useState(false);
 
@@ -19,7 +19,7 @@ const Toolbar = ({ handleSearch, handleFilter, clearFilter }) => {
     return (
         <div id="toolbar">
             <Search  handleSearch={handleSearch} />
-            <Tools handleFilterVisible={handleFilterVisible} />
+            <Tools viewGrid={viewGrid} viewList={viewList} handleFilterVisible={handleFilterVisible} gridView={gridView} />
             <Filter handleFilter={handleFilter} handleFilterVisible={handleFilterVisible} toggleVisible={filterVisible} clearFilter={clearFilter} />
         </div>
     );

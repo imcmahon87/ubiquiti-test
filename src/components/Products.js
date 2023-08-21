@@ -3,10 +3,20 @@ import ProductListView from './ProductListView';
 import ProductGridView from './ProductGridView';
 import { useState, useEffect } from 'react';
 
-const Products = ({ searchWord, filterWords }) => {
-    const [ isGrid, setIsGrid ] = useState(true);
+const Products = ({ gridView, searchWord, filterWords, viewDetails }) => {
+    const [ isGrid, setIsGrid ] = useState(false);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ products, setProducts ] = useState([]);
+    const [ deviceCount, setDeviceCount ] = useState(0);
+
+    useEffect(() => {
+        getProducts();
+    }, [searchWord, filterWords]);
+
+    useEffect(() => {
+        setIsGrid(gridView);
+    }, [gridView]);
+
 
     const getProducts = () => {
         fetch('https://static.ui.com/fingerprint/ui/public.json')
@@ -29,20 +39,18 @@ const Products = ({ searchWord, filterWords }) => {
                     device.product.name.toLowerCase().includes(searchWord.toLowerCase())
                 );
                 setProducts(searchedData);
+                setDeviceCount(searchedData.length);
                 setIsLoading(false);
             } else {    
                 const searchedData = data.devices.filter((device) =>
                     device.product.name.toLowerCase().includes(searchWord.toLowerCase())
                 );
                 setProducts(searchedData);
+                setDeviceCount(searchedData.length);
                 setIsLoading(false);
             }
           });
     }
-
-    useEffect(() => {
-        getProducts();
-    }, [searchWord, filterWords]);
 
     return (
         <div id="productsContainer">
@@ -51,11 +59,11 @@ const Products = ({ searchWord, filterWords }) => {
             ) : (
                 isGrid ? (
                     <>
-                        <span># Devices</span>
                         <div id="gridContainer">
+                            <p id="gridNumberDevices">{deviceCount} devices</p>
                             {products.map((product) => {
                                 return (
-                                    <ProductGridView product={product} key={product.id} />
+                                    <ProductGridView key={product.id} product={product} viewDetails={viewDetails}/>
                                 );
                             })
                             }
@@ -65,15 +73,15 @@ const Products = ({ searchWord, filterWords }) => {
                     <table>
                         <thead>
                             <tr>
-                                <td># Devices</td>
-                                <td>Product Line</td>
-                                <td>Name</td>
+                                <th className="columnImage">{deviceCount} devices</th>
+                                <th className="columnLine">PRODUCT LINE</th>
+                                <th className="columnName">NAME</th>
                             </tr>
                         </thead>
                         <tbody>
                             {products.map((product) => {
                                 return (
-                                    <ProductListView product={product} key={product.id}/>
+                                    <ProductListView key={product.id} product={product} viewDetails={viewDetails} />
                                 );
                             })
                             }

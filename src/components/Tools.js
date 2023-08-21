@@ -1,12 +1,14 @@
-import displayGrid from '../assets/images/toolbar-display-grid-default.svg';
-import displayList from '../assets/images/toolbar-display-list-default.svg';
+import displayGrid from '../assets/images/icon-display-grid-default.svg';
+import displayGridActive from '../assets/images/icon-display-grid-active.svg';
+import displayList from '../assets/images/icon-display-list-default.svg';
+import displayListActive from '../assets/images/icon-display-list-active.svg';
 
-const Tools = ({ handleFilterVisible }) => {
+const Tools = ({ viewGrid, viewList, handleFilterVisible, gridView }) => {
     return (
         <div id="tools">
-            <img src={displayGrid} alt="Grid View Icon" />
-            <img src={displayList} alt="List View Icon" />
-            <span onClick={handleFilterVisible}>Filter</span>
+            <img src={gridView ? displayGridActive : displayGrid} alt="Grid View Icon" onClick={viewGrid} />
+            <img src={gridView ? displayList : displayListActive} alt="List View Icon" onClick={viewList} />
+            <p onClick={handleFilterVisible}>Filter</p>
         </div>
     );
 };

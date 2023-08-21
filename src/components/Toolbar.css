@@ -1,25 +1,95 @@
 /* Toolbar Styling */
 
 #toolbar {
-    /*position: absolute;*/
-    height: 60px;
+    font-family: 'Lato';
+    font-size: 14px;
+    color: #838691;
+    height: 48px;
     width: 100%;
-    /*top: 60px;*/
+    padding: 0.5em 1em;
     display: flex;
     justify-content: space-between;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-top-color: #EDEDF0;
+    border-bottom-color: #EDEDF0;
 }
 
 #search {
-    height: 50%;
+    margin-left: 1em;
+    padding: 0 1em;
+    background-color: #F2F2F2;
+    display: flex;
+    align-content: center;
+}
+
+#search input {
+    margin: 0 1em;
+    border-style: none;
+    background-color: #F2F2F2;
+    color: #838691;
+}
+
+#search img {
+    cursor: pointer;
 }
 
 #tools {
-    display: inline;
+    display: flex;
+    align-content: center;
+}
+
+#tools img, #tools p {
+    cursor: pointer;
+    margin: 0.25em 1em;
+}
+
+#tools p {
+    margin: 0.5em 1em;
 }
 
 #filter {
     position: absolute;
-    top: 60px;
+    top: 56px;
     right: 0;
     background: #FFFFFF;
+    width: 15%;
+    box-shadow: 0 30px 20px #e6e6e6;
+}
+
+#filterHeader {
+    width: 100%;
+    height: 48px;
+    padding: 0 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-top-color: #EDEDF0;
+    border-bottom-color: #EDEDF0;
+}
+
+#filterHeader img {
+    cursor: pointer;
+}
+
+#filterBody {
+    padding: 2em 2em 1em 2em;
+}
+
+#filterBody p {
+    font-family: 'Lato Bold';
+    color: #000000;
+    margin: 0 0 2em 0;
+}
+
+#filterItem {
+    margin-bottom: 1em;
+}
+
+#filterItem label {
+    margin-left: 0.5em;
 }
