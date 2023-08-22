@@ -1,6 +1,6 @@
 /* Toolbar Styling */
 
-#toolbar {
+#toolbar, #productHeader {
     font-family: 'Lato';
     font-size: 14px;
     color: #838691;
@@ -14,6 +14,20 @@
     border-width: 1px;
     border-top-color: #EDEDF0;
     border-bottom-color: #EDEDF0;
+}
+
+#productHeader img {
+    position: absolute;
+    width: 20px;
+    height: auto;
+    left: 1em;
+    align-self: center;
+    cursor: pointer;
+}
+
+#productHeader p {
+    margin: 0 auto;
+    align-self: center;
 }
 
 #search {
@@ -55,6 +69,7 @@
     right: 0;
     background: #FFFFFF;
     width: 15%;
+    min-width: 200px;
     box-shadow: 0 30px 20px #e6e6e6;
 }
 
@@ -92,4 +107,10 @@
 
 #filterItem label {
     margin-left: 0.5em;
+}
+
+@media only screen and (max-width: 600px) {
+    #search {
+        margin: 0;
+    }
 }

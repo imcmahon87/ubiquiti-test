@@ -1,4 +1,23 @@
-#productWrapper {
+/* Main app wrapper styling */
+
+#contentWrapper {
     margin: 0 auto;
-    width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+    #contentWrapper {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #contentWrapper {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #contentWrapper {
+        width: 80%;
+    }
 }

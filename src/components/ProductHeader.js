@@ -4,7 +4,7 @@ const ProductHeader = ({ viewDetails, product }) => {
     return (
         <div id="productHeader">
             <img src={iconBack} alt="Back Icon" onClick={() => { viewDetails(''); }}/>
-            <span>{product.product.name}</span>
+            <p>{product.product.name}</p>
         </div>
     );
 };

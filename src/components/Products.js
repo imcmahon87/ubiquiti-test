@@ -11,7 +11,7 @@ const Products = ({ gridView, searchWord, filterWords, viewDetails }) => {
 
     useEffect(() => {
         getProducts();
-    }, [searchWord, filterWords]);
+    });
 
     useEffect(() => {
         setIsGrid(gridView);
@@ -55,7 +55,7 @@ const Products = ({ gridView, searchWord, filterWords, viewDetails }) => {
     return (
         <div id="productsContainer">
             {isLoading ? (
-                <p>Loading Data...</p>
+                <p id="loadingText">Loading Data...</p>
             ) : (
                 isGrid ? (
                     <>
@@ -73,7 +73,7 @@ const Products = ({ gridView, searchWord, filterWords, viewDetails }) => {
                     <table>
                         <thead>
                             <tr>
-                                <th className="columnImage">{deviceCount} devices</th>
+                                <th className="columnImage"><p id="listNumberDevices">{deviceCount} devices</p></th>
                                 <th className="columnLine">PRODUCT LINE</th>
                                 <th className="columnName">NAME</th>
                             </tr>

@@ -1,70 +1,71 @@
+import './ProductDetails.css';
+
 const ProductDetails = ({ product }) => {
+    console.log(product);
     return (
         <div id="productDetails">
             <div id="productDetailsImage">
             <img src={'https://static.ui.com/fingerprint/ui/icons/' +
                 product.icon.id + '_' + product.icon.resolutions[4][0] +
-                'x' + product.icon.resolutions[4][1] + '.png'} />
+                'x' + product.icon.resolutions[4][1] + '.png'} alt={product.line.name} />
             </div>
             <div id="productDetailsText">
                 <table>
                     <tbody>
                         <tr>
-                            <td>
+                            <td className="leftColumn">
                                 Product line
                             </td>
-                            <td>
-                                {product.line.name}
+                            <td className="rightColumn">
+                                {product.line ? product.line.name ? product.line.name : '-' : '-'}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td className="leftColumn">
                                 ID
                             </td>
-                            <td>
-                                {product.id}
+                            <td className="rightColumn">
+                                {product.id ? product.id : '-'}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td className="leftColumn">
                                 Name
                             </td>
-                            <td>
-                                {product.product.name}
+                            <td className="rightColumn">
+                                {product.product ? product.product.name ? product.product.name : '-' : '-'}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td className="leftColumn">
                                 Short name
                             </td>
-                            <td>
-                                {product.shortnames[0]}
+                            <td className="rightColumn">
+                                {product.shortnames ? product.shortnames[0] : '-'}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td className="leftColumn">
                                 Max Power
                             </td>
-                            <td>
-                                {product.id}
+                            <td className="rightColumn">
+                                {product.unifi ? product.unifi.network ? product.unifi.network.radios ? product.unifi.network.radios.na ? product.unifi.network.radios.na.maxPower ? product.unifi.network.radios.na.maxPower : '-' : '-' :'-' : '-' : '-'}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td className="leftColumn">
                                 Speed
                             </td>
-                            <td>
-                                {product.hasOwnProperty('unifi.network.ethernetMaxSpeedMegabitsPerSecond') ? ( product.unifi.network.ethernetMaxSpeedMegabitsPerSecond ) :
-                                    ('nothing there')}
+                            <td className="rightColumn">
+                                {product.unifi ? product.unifi.network ? product.unifi.network.ethernetMaxSpeedMegabitsPerSecond ? product.unifi.network.ethernetMaxSpeedMegabitsPerSecond + ' Mbps' : '-' : '-' : '-'}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td className="leftColumn">
                                 Number of ports
                             </td>
-                            <td>
-                                {product.hasOwnProperty('unifi.network.numberOfPorts') ? ( product.unifi.network.numberOfPorts ) :
-                                    ('nothing there')}
+                            <td className="rightColumn">
+                                {product.unifi ? product.unifi.network ? product.unifi.network.numberOfPorts ? product.unifi.network.numberOfPorts : '-' : '-' : '-'}
                             </td>
                         </tr>
                     </tbody>

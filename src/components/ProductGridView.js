@@ -4,7 +4,7 @@ const ProductGridView = ({ product, viewDetails }) => {
             <div className="gridProductHeader">
                 <img src={'https://static.ui.com/fingerprint/ui/icons/' +
                 product.icon.id + '_' + product.icon.resolutions[3][0] +
-                'x' + product.icon.resolutions[3][1] + '.png'} />
+                'x' + product.icon.resolutions[3][1] + '.png'} alt={product.line.name} />
             </div>
             <div className="gridProductBody">
                 <p>{product.product.name}</p>

@@ -1,3 +1,5 @@
+/* Styling for typefaces and top level elements */
+
 @font-face {
   font-family: 'Lato';
   src: local('Lato'), url('./assets/fonts/Lato-Regular.ttf'), format('truetype');

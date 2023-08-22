@@ -51,14 +51,14 @@ const App = () => {
         {productView ? (
           <>
             <ProductHeader viewDetails={viewDetails} product={productView} />
-            <div id="productWrapper">
+            <div id="contentWrapper">
               <ProductDetails product={productView} />
             </div>
           </>
         ) : (
           <>
-            <Toolbar viewGrid={viewGrid} viewList={viewList} handleSearch={handleSearch} handleFilter={handleFilter} clearFilter={clearFilter} gridView={gridView} />
-            <div id="productWrapper">
+            <Toolbar viewGrid={viewGrid} viewList={viewList} handleSearch={handleSearch} handleFilter={handleFilter} clearFilter={clearFilter} gridView={gridView} searchWord={searchWord} />
+            <div id="contentWrapper">
               <Products gridView={gridView} searchWord={searchWord} filterWords={filterWords} viewDetails={viewDetails} />
             </div>
           </>

@@ -2,7 +2,7 @@ import iconSearch from '../assets/images/icon-search.svg';
 import iconClose from '../assets/images/icon-close.svg';
 import { useState, useRef } from 'react';
 
-const Search = ({ handleSearch }) => {
+const Search = ({ handleSearch, searchWordParent }) => {
 
     const [searchWord, setSearchWord] = useState('');
 
@@ -27,7 +27,7 @@ const Search = ({ handleSearch }) => {
     return (
         <div id="search">
             <img src={iconSearch} alt="Search Icon" onClick={() => handleSearch(searchWord)} />
-            <input ref={ref} type="text" placeholder="Search" onChange={updateSearchWord} onKeyDown={handleKeyDown} />
+            <input ref={ref} type="text" placeholder={searchWordParent ? searchWordParent : "Search"} onChange={updateSearchWord} onKeyDown={handleKeyDown} />
             <img src={iconClose} alt="Clear Search Icon" onClick={clearSearch} />
         </div>
     );

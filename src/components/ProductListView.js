@@ -4,7 +4,7 @@ const ProductListView = ({ product, viewDetails }) => {
             <td className="columnImage">
                 <img src={'https://static.ui.com/fingerprint/ui/icons/' +
                 product.icon.id + '_' + product.icon.resolutions[0][0] +
-                'x' + product.icon.resolutions[0][1] + '.png'} />
+                'x' + product.icon.resolutions[0][1] + '.png'} alt={product.line.name} />
             </td>
             <td className="columnLine">
                 {product.line.name}
