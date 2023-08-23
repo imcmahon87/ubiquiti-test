@@ -6,6 +6,7 @@ import Products from './components/Products';
 import ProductHeader from './components/ProductHeader';
 import ProductDetails from './components/ProductDetails';
 
+// Main App component for Ubiquiti Front-End Test App
 const App = () => {
 
   const [ searchWord, setSearchWord ] = useState('');
@@ -13,10 +14,16 @@ const App = () => {
   const [ gridView, setGridView ] = useState(false);
   const [ productView, setProductView ] = useState('');
 
+  // handleSearch() is called by the Search component which passes the search word back here
   const handleSearch = (word) => {
     setSearchWord(word);
   }
 
+  /*
+  handleFilter() is called by the FilterItem component, which passes the product line filter
+  back here in the form of event.target.id. If the box is checked, add the word. Otherwise
+  remove it. Products component applies actual filtering logic
+  */
   const handleFilter = (event) => {
     let updatedWords = [...filterWords];
     let newWord = event.target.id;
@@ -25,7 +32,6 @@ const App = () => {
     } else {
       updatedWords.splice(filterWords.indexOf(newWord), 1);
     }
-    console.log(updatedWords);
     setFilterWords(updatedWords);
   };
 
@@ -45,6 +51,7 @@ const App = () => {
     setProductView(product);
   }
 
+  // Return either individual product view or a list/grid style products view
   return (
     <>
       <Header />

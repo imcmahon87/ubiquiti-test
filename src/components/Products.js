@@ -3,7 +3,9 @@ import ProductListView from './ProductListView';
 import ProductGridView from './ProductGridView';
 import { useState, useEffect } from 'react';
 
+// Products component fetches product data and displays it in either a list or grid view
 const Products = ({ gridView, searchWord, filterWords, viewDetails }) => {
+
     const [ isGrid, setIsGrid ] = useState(false);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ products, setProducts ] = useState([]);
@@ -13,17 +15,22 @@ const Products = ({ gridView, searchWord, filterWords, viewDetails }) => {
         getProducts();
     });
 
+    // If gridView is true then show products in grid view
     useEffect(() => {
         setIsGrid(gridView);
     }, [gridView]);
 
-
+    /* 
+    getProducts() fetches the product data from a JSON file and applies search/filter criteria
+    to the results. Then it sets isLoading to false, letting the JSX render the appropriate view
+    */ 
     const getProducts = () => {
         fetch('https://static.ui.com/fingerprint/ui/public.json')
           .then((response) => {
             return response.json();
           })
           .then((data) => {
+            // If product line filters exist, use them before applying search word filters
             if (filterWords.length > 0) {
                 let filteredResults = [];
                 for (let i = 0; i < filterWords.length; i++) {
@@ -34,14 +41,14 @@ const Products = ({ gridView, searchWord, filterWords, viewDetails }) => {
                         filteredResults.push(filteredData[j]);
                     }
                 }
-                console.log(filteredResults);
                 const searchedData = filteredResults.filter((device) =>
                     device.product.name.toLowerCase().includes(searchWord.toLowerCase())
                 );
                 setProducts(searchedData);
                 setDeviceCount(searchedData.length);
                 setIsLoading(false);
-            } else {    
+            } else {
+                // If no product line filters exist, just apply search word criteria    
                 const searchedData = data.devices.filter((device) =>
                     device.product.name.toLowerCase().includes(searchWord.toLowerCase())
                 );

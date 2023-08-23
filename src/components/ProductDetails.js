@@ -1,7 +1,11 @@
 import './ProductDetails.css';
 
+/*
+ProductDetails component shows a large product image and various details for one product
+The nested ternary operators for each product detail check if properties exist within the
+JSON database before displaying either the relevant data or a dash for no information
+*/
 const ProductDetails = ({ product }) => {
-    console.log(product);
     return (
         <div id="productDetails">
             <div id="productDetailsImage">

@@ -1,7 +1,9 @@
 import './Header.css';
 import logoDefault from '../assets/images/logo-ubiquiti-default.svg';
 
+// Header component is a simple header with logo, title, and developer name
 const Header = () => {
+    
     return (
         <div id="header">
             <span id="headerLeft">

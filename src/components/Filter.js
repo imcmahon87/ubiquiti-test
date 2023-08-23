@@ -2,6 +2,7 @@ import iconClose from '../assets/images/icon-close.svg';
 import FilterItem from './FilterItem';
 import { useState, useEffect } from 'react';
 
+// Filter component is the small window with a checkbox for each product line
 const Filter = ({ handleFilterVisible, toggleVisible, handleFilter, clearFilter }) => {
 
     const [ isVisible, setIsVisible ] = useState(false);
@@ -20,7 +21,7 @@ const Filter = ({ handleFilterVisible, toggleVisible, handleFilter, clearFilter 
             <div id="filter">
                 <div id="filterHeader">
                     <span>Filter</span>
-                    <img src={iconClose} alt="Close Icon" onClick={() => { handleFilterVisible(); clearFilter(); }} />
+                    <img id="closeImg" src={iconClose} alt="Close Icon" onClick={() => { handleFilterVisible(); clearFilter(); }} />
                 </div>
                 <div id="filterBody">
                     <p>Product Line</p>

@@ -16,6 +16,21 @@
     border-bottom-color: #EDEDF0;
 }
 
+#closeImg {
+    width: 12px;
+    height: auto;
+}
+
+#searchImg {
+    width: 15px;
+    height: auto;
+}
+
+#tools img {
+    width: 20px;
+    height: auto;
+}
+
 #productHeader img {
     position: absolute;
     width: 20px;
@@ -112,5 +127,14 @@
 @media only screen and (max-width: 600px) {
     #search {
         margin: 0;
+        padding: 0 0.5em;
+    }
+
+    #search input {
+        margin: 0 0.5em;
+    }
+
+    #tools img {
+        margin: 0.25em 0.7em;
     }
 }
